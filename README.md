@@ -34,9 +34,53 @@ you can set additional-paths to watch or not to watch.
 
 ---
 
-2. CONFIGURATION
+# 2. CONFIGURATION
 
-3. SECURITY
+### Guides
+
+The following guides illustrate how to use some features concretely:
+
+- [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
+- [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
+- [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+- [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
+
+## Configurations
+
+- Use devtools to reload
+- set multipart.max-size
+- set multipart.max-request-size
+
+### Config is done with the following heirachy
+
+- Presence or absence of:
+  - A jar
+  - bean
+  - property
+
+You can exclude autoconfiguration with the `exclude`(use the class name) and `excludeName`(uses string classpath) argument to the enableautoconfigure annotation
+
+or use propery spring.autoconfigure.exlude = classpath
+
+You can ovveride the PropertySourcesPlaceholderConfigurer
+
+We can also exlcude the JMXAutoconfiguration, JacksonAutoconfiguration, WebsocketAutoconfiguration
+
+## @ConditionOnClass
+
+- Name and Value
+
+## @ConditionOnMissingClass
+
+- Name only
+
+## @ConditionalOnBean
+
+## @ConditionOnMissingBean
+
+## @ConditionalOnPropery
+
+# 3. SECURITY
 
 Spring provides various authentication filters/managers
 
