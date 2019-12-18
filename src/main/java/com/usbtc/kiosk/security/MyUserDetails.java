@@ -20,6 +20,7 @@ public class MyUserDetails implements UserDetailsService {
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     final User user = userRepository.findByUsername(username);
     if (user == null) {
+      // the auth manager expects this specific exception
       throw new UsernameNotFoundException("User with '" + username + "' not found");
     }
     return org.springframework.security.core.userdetails.User.withUsername(username).password(user.getPassword())
