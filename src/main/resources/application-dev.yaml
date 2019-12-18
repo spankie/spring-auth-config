@@ -4,7 +4,10 @@ server:
 
 logging:
   level:
-    com: off # stops logging of com.* packages
+    org.springframework.web: debug
+    # com: off # stops logging of com.* packages
+
+# spring.http.log-request-details=true
 
 spring: 
   jpa: 
@@ -22,8 +25,16 @@ spring:
     # initialize: true
     schema: classpath:/schema.sql # THE schema.sql file MUST BE PRESENT
     continue-on-error: true
+  http: 
+    log-request-details: true
+
+debug: true
+
+# https://medium.com/@asegu/build-your-own-spring-boot-starter-90ad1f426227
+# https://medium.com/@asegu/why-a-spring-boot-developer-could-die-without-spring-boot-starter-properties-11c5d6bf459a
 
 api: 
   spankie: 
     url: http://localhost
-    from: "Hello World!"
+    from: " Hello World! "
+    mylog: true
