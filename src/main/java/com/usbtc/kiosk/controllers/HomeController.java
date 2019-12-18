@@ -1,6 +1,6 @@
 package com.usbtc.kiosk.controllers;
 
-import com.usbtc.kiosk.configurations.ApiConfiguration;
+import com.usbtc.kiosk.configurations.PropertyConfiguration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
 
   @Autowired
-  private ApiConfiguration apiConfiguration;
+  private PropertyConfiguration propertyConfiguration;
 
   @Value("${api.spankie.from:Hi}") // sets the default to "Hi"
   private String from;
 
   @GetMapping
   public String name() {
-    return apiConfiguration.getFrom() + " " + from;
+    return "'" + propertyConfiguration.getFrom() + " '" + from + "'";
   }
 }
