@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * AppAutoConfiguration
  */
 @Configuration
-@ConditionalOnProperty(name = "api.spankie.mylog", havingValue = "true")
+@ConditionalOnProperty(name = "api.spankie.logfilter", havingValue = "true")
 public class AppAutoConfiguration {
 
   @Bean
