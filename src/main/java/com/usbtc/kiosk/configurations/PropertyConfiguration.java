@@ -11,8 +11,8 @@ public class PropertyConfiguration {
 
   private String url;
   private int port;
-  private String from;
-  private boolean mylog;
+  private String from = "From Jide";
+  private boolean logfilter;
 
   public int getPort() {
     return port;
@@ -38,17 +38,12 @@ public class PropertyConfiguration {
     this.url = url;
   }
 
-  public boolean isMylog() {
-    return mylog;
+  public boolean isLogFilter() {
+    return logfilter;
   }
 
-  public void setMylog(boolean mylog) {
-    this.mylog = mylog;
-  }
-
-  @Bean
-  public ModelMapper modelMapper() {
-    return new ModelMapper();
+  public void setLogFilter(boolean logfilter) {
+    this.logfilter = logfilter;
   }
 
 }
