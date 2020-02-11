@@ -23,7 +23,8 @@ public class LogFilter extends OncePerRequestFilter {
       throws ServletException, IOException {
     log.debug("Hi there... contentType: ");
     System.out.println("hi there... what is happengin" + request.getRemotePort());
-    response.setStatus(201);
+    response.setStatus(500);
+    // call the rest of the filters in the chain
     filterChain.doFilter(request, response);
   }
 
