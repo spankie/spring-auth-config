@@ -51,16 +51,27 @@ The following guides illustrate how to use some features concretely:
 - set multipart.max-size
 - set multipart.max-request-size
 
-### Config is done with the following heirachy
+### Config is done with the following:
 
 - Presence or absence of:
   - A jar
   - bean
   - property
 
+there are others but these are the main ones necessary for configuring our application
+
+- Positive matches
+- Negative matches
+- exclusions: THings configured by you not be configured regardless of any conditions
+- Unconditional classes: regardles of any condition, they would be configured
+
+Here are the ways we can enable autoconfiguration report:
+
+![Debug](./debug.png)
+
 You can exclude autoconfiguration with the `exclude`(use the class name) and `excludeName`(uses string classpath) argument to the enableautoconfigure annotation
 
-or use propery spring.autoconfigure.exlude = classpath
+or use property spring.autoconfigure.exlude = classpath
 
 You can ovveride the PropertySourcesPlaceholderConfigurer
 
