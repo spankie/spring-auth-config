@@ -1,5 +1,7 @@
 package com.usbtc.kiosk.controllers;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.usbtc.kiosk.configurations.PropertyConfiguration;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,8 @@ public class HomeController {
   private String from;
 
   @GetMapping
-  public String name() {
-    return "'" + propertyConfiguration.getFrom() + " '" + from + "'";
+  public String name(HttpServletResponse response) {
+    response.setStatus(200);
+    return "'" + propertyConfiguration.getFrom() + "'" + from + "'";
   }
 }
