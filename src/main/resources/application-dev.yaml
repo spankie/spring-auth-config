@@ -28,7 +28,7 @@ spring:
   http: 
     log-request-details: true
 
-debug: true
+# debug: true
 
 # https://medium.com/@asegu/build-your-own-spring-boot-starter-90ad1f426227
 # https://medium.com/@asegu/why-a-spring-boot-developer-could-die-without-spring-boot-starter-properties-11c5d6bf459a
@@ -36,5 +36,5 @@ debug: true
 api: 
   spankie: 
     url: http://localhost
-    from: " Hello World! "
-    mylog: true
+    # from: " Hello World! "
+    logfilter: false
