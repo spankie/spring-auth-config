@@ -93,6 +93,28 @@ We can also exlcude the JMXAutoconfiguration, JacksonAutoconfiguration, Websocke
 
 # 3. SECURITY
 
+By adding the starter dependency, you have a default login and registrtion page set up for you.
+
+> DEMO: add security to the todo application.
+
+- `/login` will log you in with username: `user` password: it is printed on the console.
+
+- `/logout` will log the user out
+
+### Configure the security process
+
+To configure how spring boot handle the security you have to create a class that would override the abstract WebSecurityConfigurerAdapter class and implement the various method necessary. (Check the demo)
+
+if there is an error in loggin in, then you sent to `/login?error` if you are logged out, then you will be redirected to `/login?logout`
+
+## configure the security
+
+To configure the security you need to extend the WebSecurityConfigurerAdapter abstract class.
+
+## Auth
+
+_https://www.youtube.com/watch?v=3pZ3Nh8tgTE_
+
 Spring provides various authentication filters/managers
 
 - e.g Openidauthfilter, basicauthfilter, digestauthfilter
