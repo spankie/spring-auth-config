@@ -1,13 +1,22 @@
 package com.usbtc.kiosk.security;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 /**
  * WebSecurityConfuguration Overrides the spring security configuration by
@@ -47,7 +56,15 @@ public class WebSecurityConfuguration extends WebSecurityConfigurerAdapter {
 
     // define what to do when user attempt to access and authenticated route without
     // proper authorizations
-    http.exceptionHandling().accessDeniedPage("/api/v1/auth/login");
+    http.exceptionHandling().accessDeniedHandler(new AccessDeniedHandler() {
+
+      @Override
+      public void handle(HttpServletRequest req, HttpServletResponse res, AccessDeniedException ex)
+          throws IOException, ServletException {
+        res.setStatus(res.SC_UNAUTHORIZED);
+      }
+    });
+    // accessDeniedPage("/api/v1/auth/login"); PREV
     // accessDeniedHandler() // specify the handler to handle access denied
 
     // create a new SecurityConfigurerAdapter<DefaultSecurityFilterChain,
