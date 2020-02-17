@@ -14,6 +14,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.JwtException;
@@ -41,7 +42,9 @@ public class JwtTokenProvider {
     secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
   }
 
-  // create token from username and roles
+  /*
+   * Removes the "Bearer " from the authorization header and return actual token
+   */
   public String resolveToken(HttpServletRequest request) {
     String bearerToken = request.getHeader("Authorization");
     if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
@@ -60,7 +63,7 @@ public class JwtTokenProvider {
     }
   }
 
-  public Authentication getAuthentication(String token) {
+  public Authentication getAuthentication(String token) throws UsernameNotFoundException {
     UserDetails userDetails = myUserDetails.loadUserByUsername(getUsername(token));
     return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
   }
